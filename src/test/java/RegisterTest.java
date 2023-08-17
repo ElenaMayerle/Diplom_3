@@ -28,7 +28,6 @@ public class RegisterTest extends BaseTest{
     public void tearDown(){
         try {steps.deleteUser();}
         catch (Exception exception){
-            Exception e;
         }
     }
 }

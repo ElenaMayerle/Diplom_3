@@ -1,6 +1,7 @@
 package pageobjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,11 +15,8 @@ public class MainPage {
     private final By bunsButton = By.xpath(".//span[text()='Булки']");
     private final By saucesButton = By.xpath(".//span[text()='Соусы']");
     private final By fillingsButton = By.xpath(".//span[text()='Начинки']");
-    private final By someSauce = By.xpath(".//p[text()='Соус Spicy-X']");
-    private final By someBun = By.xpath(".//p[text()='Флюоресцентная булка R2-D3']");
-    private final By someFilling = By.xpath(".//p[text()='Мясо бессмертных моллюсков Protostomia']");
     private final By createOrderButton = By.xpath(".//*[text()='Оформить заказ']");
-
+    private final By selected = By.xpath(".//div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']");
     public MainPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -34,15 +32,6 @@ public class MainPage {
     public void enterAccountButtonClick() {
         driver.findElement(enterAccountButton).click();
     }
-    public boolean isSauceDisplayed(){
-        return driver.findElement(someSauce).isDisplayed();
-    }
-    public boolean isBunDisplayed(){
-        return driver.findElement(someBun).isDisplayed();
-    }
-    public boolean isFillingDisplayed(){
-        return driver.findElement(someFilling).isDisplayed();
-    }
     public void myProfileButtonClick() {
         driver.findElement(myProfileButton).click();
     }
@@ -53,5 +42,7 @@ public class MainPage {
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOfElementLocated(createOrderButton));
     }
-
+    public String getSelected(){
+        return driver.findElement(selected).getText();
+    }
 }
